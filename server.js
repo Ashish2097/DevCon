@@ -15,9 +15,9 @@ const { mongoURI } = require("./config/keys.js");
 
 // Connect to DB
 mongoose
-  .connect(mongoURI)
-  .then(() => console.log("Connected to DB."))
-  .catch((e) => console.log("Unable to connect to DB . error : ", e));
+    .connect(mongoURI)
+    .then(() => console.log("Connected to DB."))
+    .catch((e) => console.log("Unable to connect to DB . error : ", e));
 
 app.get("/", (req, res) => res.send("hello"));
 
