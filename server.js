@@ -4,7 +4,7 @@ const users = require("./routes/api/users");
 const posts = require("./routes/api/posts");
 const profile = require("./routes/api/profile");
 const bodyParser = require("body-parser");
-const passport = require('passport');
+const passport = require("passport");
 const app = express();
 
 // Body-parser middleware
@@ -16,7 +16,7 @@ const { mongoURI } = require("./config/keys.js");
 
 // Connect to DB
 mongoose
-    .connect(mongoURI)
+    .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to DB."))
     .catch((e) => console.log("Unable to connect to DB . error : ", e));
 
@@ -24,7 +24,7 @@ mongoose
 app.use(passport.initialize());
 
 // Passport Config
-require('./config/passport')(passport);
+require("./config/passport")(passport);
 
 // Use Routes
 app.use("/api/users", users);
