@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ProfileSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "users", // to get users data for the profile
     },
     handle: {
         type: String,
