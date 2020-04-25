@@ -1,27 +1,6 @@
 import React, { Component } from "react";
 
 class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-            email: "",
-            password: "",
-        };
-    }
-
-    onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-    };
-
-    onSubmit = (e) => {
-        e.preventDefault();
-        const { email, password } = this.state;
-        newUser = {
-            email,
-            password,
-        };
-    };
-
     render() {
         return (
             <div>
@@ -35,15 +14,13 @@ class Login extends Component {
                                 <p className="lead text-center">
                                     Sign in to your DevConnector account
                                 </p>
-                                <form onSubmit={this.onSubmit}>
+                                <form>
                                     <div className="form-group">
                                         <input
                                             type="email"
                                             className="form-control form-control-lg"
                                             placeholder="Email Address"
                                             name="email"
-                                            value={this.state.email}
-                                            onChange={this.state.onChange}
                                         />
                                     </div>
                                     <div className="form-group">
@@ -52,8 +29,6 @@ class Login extends Component {
                                             className="form-control form-control-lg"
                                             placeholder="Password"
                                             name="password"
-                                            value={this.state.password}
-                                            onChange={this.state.password}
                                         />
                                     </div>
                                     <input
