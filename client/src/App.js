@@ -26,6 +26,18 @@ if (localStorage.jwtToken) {
 
     // Set user and isAuthenticated
     store.dispatch(setCurrentUser(decoded));
+
+    // Check for token expiration
+    const currentTime = Date.now() / 1000;
+    if (decoded.exp < currentTime) {
+        // Logout User
+        store.dispatch(logoutUser());
+
+        // Todo: clear Current Profile
+
+        // Redirect to login
+        window.location.href = '/login';
+    }
 }
 class App extends Component {
     render() {
