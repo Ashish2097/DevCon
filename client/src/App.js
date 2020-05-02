@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import jwt_decode from 'jwt-decode';
-import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser} from './actions/authActions';
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import { Provider } from "react-redux"; // provides store for the app, has to wrapped around everything (parent)
 import store from "./store";
@@ -15,14 +15,13 @@ import Login from "./components/auth/Login";
 
 import "./App.css";
 
-
 // Check for token
 if (localStorage.jwtToken) {
     // Set auth token header auth
     setAuthToken(localStorage.jwtToken);
 
     // Decode token and get token info and exp
-    const decoded = jwt_decode(localStorage.jwtToken); 
+    const decoded = jwt_decode(localStorage.jwtToken);
 
     // Set user and isAuthenticated
     store.dispatch(setCurrentUser(decoded));
@@ -36,7 +35,7 @@ if (localStorage.jwtToken) {
         // Todo: clear Current Profile
 
         // Redirect to login
-        window.location.href = '/login';
+        window.location.href = "/login";
     }
 }
 class App extends Component {
