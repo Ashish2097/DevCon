@@ -12,6 +12,7 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Dashboard from "./components/dashboard/Dashboard";
 
 import "./App.css";
 
@@ -32,7 +33,7 @@ if (localStorage.jwtToken) {
         // Logout User
         store.dispatch(logoutUser());
 
-        // Todo: clear Current Profile
+        // Cleared Current Profile inside logoutuser
 
         // Redirect to login
         window.location.href = "/login";
@@ -53,6 +54,11 @@ class App extends Component {
                                 component={Register}
                             />
                             <Route exact path="/login" component={Login} />
+                            <Route
+                                exact
+                                path="/dashboard"
+                                component={Dashboard}
+                            />
                         </div>
                         <Footer />
                     </div>
